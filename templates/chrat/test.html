@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-2">
+    {% include "sidemenulist.html" %}
+</div> 
+<div class="b-example-divider b-example-vr"></div> 
+<div class="col-md-9">  
+    <div class="container my-5"> 
+        <h2 style="margin-bottom: 20px;">차트 표현 예제</h2> 
+
+        <div class="row">
+            <div class="col-5 m-1" >
+                <h2>차트 1</h2>
+                <canvas id="chart1" ></canvas>
+            </div>
+            <div class="col-5 m-1" >
+                <h2>차트 2</h2>
+                <canvas id="chart2" ></canvas>
+            </div>
+            <div class="col-5 m-1" >
+                <h2>차트 3</h2>
+                <canvas id="chart3" ></canvas>
+            </div>
+            <div class="col-5 m-1" >
+                <h2>차트 4</h2>
+                <canvas id="chart4" ></canvas>
+            </div> 
+        </div>
+           
+    </div>
+    
+</div> 
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    let charts = [];
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // 차트 초기 설정
+        for (let i = 1; i <= 4; i++) {
+            let canvasId = 'chart' + i;
+            let ctx = document.getElementById(canvasId).getContext('2d');
+            let data = getChartDate(i) ; 
+            charts[i] = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['데이터 1', '데이터 2', '데이터 3', '데이터 4'],
+                    datasets: [{
+                        label: '차트 ' + i,
+                        data: data,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 206, 86, 0.5)',
+                            'rgba(75, 192, 192, 0.5)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    });
+ 
+
+    // 랜덤 데이터 생성 함수
+    function generateRandomData() {
+        let data = [];
+        for (let i = 0; i < 4; i++) {
+            data.push(Math.floor(Math.random() * 10) + 1);
+        }
+        return data;
+    }
+</script>
+
+{% if stock_list %} 
+{{ stock_list | json_script:'jsonData'}}  
+<script id="jsonData" type="application/json">변수 내용</script>
+<script type = "text/javascript"> 
+    var placeData = JSON.parse(document.getElementById('jsonData').textContent);
+    var jsonData = JSON.parse(placeData)
+    function getChartDate(index) {
+        let data = [];    
+        data.push(jsonData[index].open)
+        data.push(jsonData[index].high)
+        data.push(jsonData[index].low)
+        data.push(jsonData[index].volume)     
+        console.log(data)  
+        return data;
+    }  
+</script>
+{% endif %}
+
+{% endblock %}
