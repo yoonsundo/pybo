@@ -8,3 +8,5 @@ git remote -v
 git push origin master
 
 https://patrickstar-jjh.tistory.com/7
+
+https://rldd.tistory.com/251
