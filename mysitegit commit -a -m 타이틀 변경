@@ -1,0 +1,13 @@
+[1mdiff --git a/templates/base.html b/templates/base.html[m
+[1mindex 81651f3..224412d 100644[m
+[1m--- a/templates/base.html[m
+[1m+++ b/templates/base.html[m
+[36m@@ -12,7 +12,7 @@[m
+ 	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>[m
+     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>[m
+ 	[m
+[31m-	<title>테스트 파이보보보!</title> [m
+[32m+[m	[32m<title>파이보 프로젝트</title>[m[41m [m
+ 	<style>[m
+ 	.b-example-divider {[m
+         width: 100%;[m
