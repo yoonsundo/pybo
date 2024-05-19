@@ -6,3 +6,5 @@ git remote remove origin 명령어를 입력해서 기존에 연결되어 있는
 git remote add origin [새롭게 연결할 깃 레파지토리 주소] 명령어를 입력합니다.
 git remote -v 
 git push origin master
+
+https://patrickstar-jjh.tistory.com/7
