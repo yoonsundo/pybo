@@ -10,3 +10,6 @@ git push origin master
 https://patrickstar-jjh.tistory.com/7
 
 https://rldd.tistory.com/251
+
+git push origin master 로컬 -> 원격 커밋
+git pull origin master 원격 -> 로컬 업데이트
