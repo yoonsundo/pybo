@@ -31,9 +31,9 @@ class PasswordResetForm(auth_forms.PasswordResetForm):
         username = cleaned_data.get("username")
         email = cleaned_data.get("email")
 
-        # if username and email:
-            # if User.objects.get(username=username).email != email:
-            #     raise ValidationError("사용자의 이메일 주소가 일치하지 않습니다")
+        if username and email:
+            if User.objects.get(username=username).email != email:
+                raise ValidationError("사용자의 이메일 주소가 일치하지 않습니다")
 
     def get_users(self, email=''):
         active_users = User.objects.filter(**{
