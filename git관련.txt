@@ -16,3 +16,22 @@ git pull origin master 원격 -> 로컬 업데이트
 
 push 올리기
 pull 받기
+
+
+cmd 명령어관련
+
+
+
+cd.. 이전디렉토리
+cd/
+cd projects
+C:\venvs\mysite\Scripts\activate
+cd mysite
+python manage.py runserver
+python manage.py runserver --settings=config.settings.prod 
+로컬분리 
+
+DJANGO_SETTINGS_MODULE 환경 변수는 장고 서버 실행 시 사용하는 --settings=config.settings.local 옵션을 대신하는 환경변수이다. 즉, 로컬환경에서 다음과 같이 장고서버를 실행할 수 있다.
+
+(mysite) c:\projects\mysite>set DJANGO_SETTINGS_MODULE=config.settings.local
+(mysite) c:\projects\mysite>python manage.py runserver

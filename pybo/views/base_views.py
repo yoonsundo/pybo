@@ -5,6 +5,8 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.core.mail import EmailMessage
+
 
 from ..models import Question, Answer
 
@@ -46,3 +48,11 @@ def sideMenuGet(request):
     sideMenu_list = SideMenuList.objects.order_by('-seq') 
     context = {'sideMenu_list': sideMenu_list}
     return redirect('pybo:index') 
+
+
+def send_email(request):
+    subject = "message"							# 타이틀
+    to = ["thundo@naver.com"]					# 수신할 이메일 주소
+    from_email = "thundo@naver.com"			# 발신할 이메일 주소
+    message = "메세지 테스트"					# 본문 내용
+    EmailMessage(subject=subject, body=message, to=to, from_email=from_email).send()

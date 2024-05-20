@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from pybo import views
-from chart import views
+from chart import views 
+from common import views  # 추가
 from django.contrib.auth import views as auth_views
 from pybo.views import base_views
 
@@ -27,4 +28,5 @@ urlpatterns = [
     # path('', include('pybo.urls')),
     path('', base_views.index, name='index'),  # '/' 에 해당되는 path 
     path('chart/', include('chart.urls')),
+    path('reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),  # 추가
 ]

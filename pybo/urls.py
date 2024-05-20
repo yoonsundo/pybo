@@ -13,6 +13,9 @@ urlpatterns = [
         base_views.detail, name='detail'), 
     path('sideMenuGet/',
         base_views.sideMenuGet , name='sideMenuGet'),
+    path('send_email/',
+        base_views.send_email , name='send_email'),
+
 
     # question_views.py
     path('question/create/',
