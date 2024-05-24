@@ -4,13 +4,22 @@ from django.contrib.auth.models import User
 import django.contrib.auth.forms as auth_forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth import views as auth_views
+from common.models import Profile
 
 class UserForm(UserCreationForm):
-    email = forms.EmailField(label="이메일")
+    email = forms.EmailField(label="이메일")  
 
-class Meta:
-    model = User
-    fields = ("username", "password1", "password2", "email")
+    class Meta:
+        model = User
+        fields = ("username", "password1", "password2", "email")
+
+class ProfileForm(forms.ModelForm):
+    name = forms.CharField(label="이름", max_length=20)
+    address = forms.CharField(label="주소", max_length=20)
+
+    class Meta:
+        model = Profile
+        fields = ("name", "address")
 
 class PasswordResetForm(auth_forms.PasswordResetForm):
     username = auth_forms.UsernameField(label="사용자ID")  # CharField 대신 사용

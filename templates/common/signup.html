@@ -24,6 +24,16 @@
             <input type="text" class="form-control" name="email" id="email"
                    value="{{ form.email.value|default_if_none:'' }}">
         </div>
+        <div class="mb-3">
+            <label for="name">이름</label>
+            <input type="text" class="form-control" name="name" id="name"
+                   value="{{ form.name.value|default_if_none:'' }}">
+        </div>
+        <div class="mb-3">
+            <label for="name">주소</label>
+            <input type="text" class="form-control" name="address" id="address"
+                   value="{{ form.address.value|default_if_none:'' }}">
+        </div>
         <button type="submit" class="btn btn-primary">생성하기</button>
     </form>
 </div>

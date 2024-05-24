@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from common.forms import UserForm, PasswordResetForm
+from common.forms import UserForm, PasswordResetForm , ProfileForm
 from django.contrib.auth import views as auth_views 
 from django.urls import reverse_lazy
 
@@ -10,13 +10,18 @@ def logout_view(request):
 
 def signup(request):
     if request.method == "POST":
-        form = UserForm(request.POST)
+        form = UserForm(request.POST) 
+        profile_form = ProfileForm(request.POST)
         if form.is_valid(): 
-            form.save()
+            form.save() 
             username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)  # 사용자 인증
+            raw_password = form.cleaned_data.get('password1') 
+            
+            user = authenticate(username=username, password=raw_password)  # 사용자 인증 
             login(request, user)  # 로그인
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save() 
             return redirect('pybo:index')
     else:
         form = UserForm()
@@ -46,3 +51,8 @@ class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
     """
     template_name = 'common/password_reset_confirm.html'
     success_url = reverse_lazy('common:login')
+
+
+def page_not_found(request, exception):
+    return render(request, 'common/404.html', {})
+    

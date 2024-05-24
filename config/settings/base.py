@@ -41,7 +41,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 INSTALLED_APPS = [
     'common.apps.CommonConfig',  
-    'pybo.apps.PyboConfig',
+    'pybo.apps.PyboConfig', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,9 +133,7 @@ def get_secret(setting, secrets=secrets):
     except KeyError:
         error_msg = "Set the {} environment variable".format(setting)
         raise ImproperlyConfigured(error_msg)
-
-SECRET_KEY = get_secret("SECRET_KEY")
-
+  
 # Email 전송
 # 메일을 호스트하는 서버
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
