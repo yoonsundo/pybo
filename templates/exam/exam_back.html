@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="col-md-2">
+    {% include "sidemenulist.html" %}
+</div>
+<div class="b-example-divider b-example-vr"></div> 
+<div class="col-md-9">
+    <div class="container my-5">
+        <h2 style="margin-bottom: 20px;">콤보박스</h2>
+        <form method="post">
+            {% csrf_token %} 
+        </form> 
+    </div>
+</div> 
+{% endblock %}
+ 
+
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("select[name=search_mode]").change(function () {
+        $("#search_mode").submit();   
+        });
+    });
+</script>
+{% endblock %}

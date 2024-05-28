@@ -42,6 +42,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 INSTALLED_APPS = [
     'common.apps.CommonConfig',  
     'pybo.apps.PyboConfig', 
+    'exam.apps.ExamConfig', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -28,8 +28,8 @@ urlpatterns = [
     # path('', include('pybo.urls')),
     path('', base_views.index, name='index'),  # '/' 에 해당되는 path 
     path('chart/', include('chart.urls')),
-    path('reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),  # 추가
-    path('myprofile/', include('myprofile.urls')),
+    path('reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),  # 추가 
+    path('exam/', include('exam.urls')),
 ]
 
 handler404 = 'common.views.page_not_found'

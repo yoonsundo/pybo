@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load pybo_filter %}
 {% block content %}
-
+ 
 <div class="col-md-2">
     {% include "sidemenulist.html" %}
 </div>
@@ -29,6 +29,7 @@
                 <th style="width:50%">제목</th>
                 <th>글쓴이</th>
                 <th>작성일시</th>
+                <th>조회수</th>
             </tr>
             </thead>
             <tbody>
@@ -42,11 +43,12 @@
                 <td class="text-start">
                     <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
                     {% if question.answer_set.count > 0 %}
-                    <span class="text-danger small mx-2">{{ question.answer_set.count }}</span>
+                    <span class="text-danger small mx-2">{{ question.answer_set.count }}</span> 
                 {% endif %}
                 </td> 
                 <td>{{ question.author.username }}</td>  <!-- 글쓴이 추가 -->
                 <td>{{ question.create_date }}</td>
+                <td>{{ question.question_hit }}</td>
             </tr>
             {% endfor %}
             {% else %}

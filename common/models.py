@@ -9,4 +9,12 @@ class Profile(models.Model):
     name = models.CharField(max_length=20)
     address = models.CharField(max_length=20)
 
+    class Meta:
+        verbose_name = '사용자'
+        verbose_name_plural = '사용자추가정보'
+        ordering = ['-name', ]
+    
+    def __str__(self):
+        return self.name
+
  

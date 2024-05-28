@@ -8,13 +8,14 @@ from django.db.models import Q
 from django.core.mail import EmailMessage
 
 
-from ..models import Question, Answer
+from ..models import Question, Answer, SideMenuList
 
 @login_required(login_url='common:login') 
 def index(request):  
     page = request.GET.get('page', '1')  # 페이지
     kw = request.GET.get('kw', '')  # 검색어
     question_list = Question.objects.order_by('create_date') 
+    sideMenu_list = SideMenuList.objects.order_by('-seq') 
     if kw:
         question_list = question_list.filter(
             Q(subject__icontains=kw) |  # 제목 검색
@@ -25,7 +26,7 @@ def index(request):
         ).distinct()
     paginator = Paginator(question_list, 10)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
-    context = {'question_list': page_obj , 'page': page, 'kw': kw}  
+    context = {'question_list': page_obj , 'page': page, 'kw': kw , 'sideMenu_list' : sideMenu_list}  
     return render(request, 'pybo/question_list.html', context)
 
 @login_required(login_url='common:login')
